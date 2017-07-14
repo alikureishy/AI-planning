@@ -66,7 +66,7 @@ class AirCargoProblem(Problem):
                 for p in self.planes:
                     for a in self.airports:
                         preconditions_positive = [expr("At({},{})".format(c, a))
-                                                  ,expr("At({},{})".format(p,a))
+                                                  ,expr("At({},{})".format(p, a))
 #                                                   ,expr("Cargo({})".format(c))
 #                                                   ,expr("Plane({})".format(p))
 #                                                   ,expr("Airport({})".format(a))
@@ -147,9 +147,12 @@ class AirCargoProblem(Problem):
             for clause in action.precond_pos:
                 if clause not in kb.clauses:
                     is_possible = False
-            for clause in action.precond_neg:
-                if clause in kb.clauses:
-                    is_possible = False
+                    break
+            if is_possible:
+                for clause in action.precond_neg:
+                    if clause in kb.clauses:
+                        is_possible = False
+                        break
             if is_possible:
                 possible_actions.append(action)
         return possible_actions
@@ -226,6 +229,7 @@ class AirCargoProblem(Problem):
         executed.
         """
         # TODO implement (see Russell-Norvig Ed-3 10.2.3  or Russell-Norvig Ed-2 11.2)
+        
 #         possible_actions = []
 #         kb = PropKB()
 #         kb.tell(decode_state(state, self.state_map).pos_sentence())
