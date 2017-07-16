@@ -229,25 +229,19 @@ class AirCargoProblem(Problem):
         executed.
         """
         # TODO implement (see Russell-Norvig Ed-3 10.2.3  or Russell-Norvig Ed-2 11.2)
-        
-#         possible_actions = []
-#         kb = PropKB()
-#         kb.tell(decode_state(state, self.state_map).pos_sentence())
-#         for action in self.actions_list:
-#             is_possible = True
-#             for clause in action.precond_pos:
-#                 if clause not in kb.clauses:
-#                     is_possible = False
-#             for clause in action.precond_neg:
-#                 if clause in kb.clauses:
-#                     is_possible = False
-#             if is_possible:
-#                 possible_actions.append(action)
-#         return possible_actions
-        
-        count = 0
-        return count
-
+        # Assumption:
+        #    - One action can only achieve one goal state. This is an explicit assumption of this exercise.
+        #
+        # Therefore, the cost of reaching the goal from the given state will be at least 
+        # the number of goal states remaining to be fulfilled. Since this does not overestimate
+        # the cost of h for any goal state, this heuristic is admissable. 
+        unsatisfied_goal_count = 0
+        kb = PropKB()
+        kb.tell(decode_state(node.state, self.state_map).pos_sentence())
+        for clause in self.goal:
+            if clause not in kb.clauses:
+                unsatisfied_goal_count += 1
+        return unsatisfied_goal_count
 
 def air_cargo_p1() -> AirCargoProblem:
     cargos = ['C1', 'C2']
