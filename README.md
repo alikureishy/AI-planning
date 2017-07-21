@@ -15,18 +15,22 @@ Furthermore, in all three problems, the heuristic-based A* searches that eventua
 Among the non-heuristic-based search algorithms, a simple Breadth First Search seems to have achieved optimal performance both in terms of the plan length and also with the runtime, number of expansions, number of goal tests and new nodes. <Why is this better than UCS?>
 
 ### Depth First Search
-	- Performance: This algorithm appears to have created the least optimal plans (by a significant margin), amongst all the other search algorithms. However, it achieved this with the fewest node expansions, goal tests and new nodes as compared to the other non-heuristic approaches below. The tradeoff of getting faster performance at the cost of sub-optimal results, however, makes this algorithm the worst choice among the choices.
-	- The reason for sub-optimal results is that the algorithm is sensitive to the order in which the actions are traversed. This algorithm focuses on finding "a" path, rather than finding one of "the" paths from initial to goal states. This explains why the expansions, goal tests, new nodes and runtime for this search algorithm applied to problem # 3 were lower than that for problem # 2, even though the size difference might have suggested the opposite. It is possible that the transitions from initial to goal states for problem # 3 might have been clustered closer to the side of the graph that the depth first search traversed first.
+
+This algorithm appears to have created the least optimal plans (by a significant margin), amongst all the other search algorithms. However, it achieved this with the fewest node expansions, goal tests and new nodes as compared to the other non-heuristic approaches below. The tradeoff of getting faster performance at the cost of sub-optimal results, however, makes this algorithm the worst choice among the choices.
+
+The reason for sub-optimal results is that the algorithm is sensitive to the order in which the actions are traversed. This algorithm focuses on finding "a" path, rather than finding one of "the" paths from initial to goal states. This explains why the expansions, goal tests, new nodes and runtime for this search algorithm applied to problem # 3 were lower than that for problem # 2, even though the size difference might have suggested the opposite. It is possible that the transitions from initial to goal states for problem # 3 might have been clustered closer to the side of the graph that the depth first search traversed first.
 
 ### Breadth First Search
-	- Performance: The issue seen with DFS's non-determinism and resulting loss in optimality is not found with breadth-first traversal since all nodes at a given level would be visited before going to the next level, thereby assuring that if a path existed to a goal, the most straightforward/optimal /shortest path would be discovered, rather than just "a" possible path of any length. This ensures that BFS yields optimal solutions. The runtime, node expansions, goal tests and new nodes are understandably more than with DFS.
+
+The issue seen with DFS's non-determinism and resulting loss in optimality is not found with breadth-first traversal since all nodes at a given level would be visited before going to the next level, thereby assuring that if a path existed to a goal, the most straightforward/optimal /shortest path would be discovered, rather than just "a" possible path of any length. This ensures that BFS yields optimal solutions. The runtime, node expansions, goal tests and new nodes are understandably more than with DFS.
 
 ### Uniform Cost Search
-	- Overall, this algorithm achieved an optimal plan for all 3 problems, with acceptable runtime/node-expansion/new-node/goal-tests counts that were not as optimal as the metrics achieved by BFS. UCS consistently underperformed BFS in terms of these latter 3 metrics. <This make ssense because..?>
+
+Overall, this algorithm achieved an optimal plan for all 3 problems, with acceptable runtime/node-expansion/new-node/goal-tests counts that were not as optimal as the metrics achieved by BFS. UCS consistently underperformed BFS in terms of these latter 3 metrics. <This make ssense because..?>
 
 ## Comparison & contrast of A* heuristic search result metrics
-	- Ignore preconditions:  In all 3 problems, A* with the ignore-preconditions heuristic yielded optimal results in a highly performant manner.
-	- Level sum: A* with the level-sum heuristic took > 10 mins for problems 2 and 3. Though it yielded an optimal solution for problem 1, it did not bet the performance of A* with the ignore-preconditions heuristic for the same problem.
+* Ignore preconditions:  In all 3 problems, A* with the ignore-preconditions heuristic yielded optimal results in a highly performant manner.
+* Level sum: A* with the level-sum heuristic took > 10 mins for problems 2 and 3. Though it yielded an optimal solution for problem 1, it did not bet the performance of A* with the ignore-preconditions heuristic for the same problem.
 
 ### What was the best heuristic?
 
