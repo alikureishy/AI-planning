@@ -1,3 +1,8 @@
+<!--- Adding links to various images used in this document --->
+[Data]: https://github.com/safdark/AI-planning/blob/master/docs/images/Project3_Data.png
+
+[![Data]]
+
 # AI - Planning
 
 ## Terms Used:
@@ -49,7 +54,3 @@ A-Star with the ignore-preconditions heuristic, was the best performing path pla
 In general, the non-heuristic-based search algorithms guarantee optimal planning, but at heavy performance cost. For instance, for both problems 2 and 3, three of the non-heuristic based algorithms not mentioned above (i.e, Breadth First Tree Search, Depth Limited Search, and Recursive Best First Search) took > 10 mins. The only non-heuristic-based search algorithms to not guarantee optimal planning were the Greedy-Best-First-Graph-Search, the Depth-First-Graph-Search and the Depth-Limited-Search algorithms. This makes sense for the first algorithm because *<……>*, and as for the latter two algorithms, their performance makes sense too, since the depth-first approach is not well suited to this type of problem anyway.
 
 Heuristic-based search algorithms, on the other hand, tended to yield an optimal plan for all three problems, with the exception of the A-Star with level-sum heuristic, that took > 10 mins for problems 2 and 3. Considering that 3 out of the 7 non-heuristic-based search algorithms took > 10 mins for problems 2 and 3, 1 out of 3 for the heuristic-based search algorithms is a pretty good performance improvement without sacrificing optimal planning. Of course, these are best-effort algorithms, so cannot be guaranteed to converge on the optimal solution, but for the majority of cases, as with problems 1, 2 and 3, they were sufficient.
-
-## Visual Aid
-
-Here is a table of performance data collected for the 3 problems using the 10 search algorithms, across 5 metrics:
