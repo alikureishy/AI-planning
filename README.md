@@ -1,27 +1,60 @@
 <!--- Adding links to various images used in this document --->
 [Data]: https://github.com/safdark/AI-planning/blob/master/Project3_Data.png
 
-![Data]
+![Data] (https://github.com/safdark/AI-planning/blob/master/Project3_Data.png)
 
 # AI - Planning
 
-## Terms Used:
+This document gives a high level overview of the search algorithms being evaluated, and a description of the problems they are being evaluated against.
+
+## Overview
+
+### Definitions/Terms
 
 *Runtime Metrics*: References to the word 'Performance Metrics' will be intended to refer to an algorithm's performance across 4 metrics - runtime, node expansions, goal tests and new node creations. This avoids redundancy
 
 *Frontier*: This is a collection of the nodes whose neighbors have not yet been explored. In other words, these nodes have been reached, but have not been explored further. For the purpose of our discussion, the 'frontier' also encapsulates the underlying *representation* of this collection -- i.e, either a list, stack, queue, priority-queue etc. This is important to consider here because the choice of this data structure precisely determines the type of search algorithm ultimately being implemented (eg. Breadth-First-Search, Depth-First-Search, Uniform-Cost-Search etc), because this data structure dictates the order in which elements are selected at each subsequent step of the search algorithm.
 
+### Problem Structures
 *Tree-Search*: The structure of the search space in this case is a tree, with no cross-edges or back-edges (as is possible with a graph search). The implication of this on the algorithm is that there is no need to maintain a list of explored/visited nodes. Each neighbor of a node that is being explored/visited is guaranteed not to have been visited before.
 
 *Graph-Search*: The structure of the search space in this case is a graph, with forward-edges, cross-edges and back-edges. The implication of this on the saerch algorithm is that it needs to maintain a list of explored/visited edges, and each time an edge's neighbors are explored, those neighbors that have already been explored are not added to the frontier. The Graph-Search algorithm reduces to a Tree-Search algorithm if the graph being searched on fulfills the structural requirements of being a tree data structure (i,e, no back- or cross- edges).
 
-*Breadth-First-Search*: A search algorithm wherein the next node visited from the frontier is chosen based on the MIN # of hops from the start. Frontier = regular queue (FIFO).
+### Algorithm Flavor
 
-*Depth-First-Search*: A search algorithm wherein the next node visited from the frontier is chosen based on the MAX # of hops from the start. Frontier = regular stack (FILO).
+*Greedy Search*:
 
-*Uniform Cost Search*: A search algorithm wherein the next node visited from the frontier is chosen based on the MIN *total-path-cost* of the node. Total-path-cost is the cost of reaching that node from the start node. A Uniform Cost Search reduces to a Breadh-First-Search when all graph edges have the same cost (eg. cost of 1). Frontier = priority queue.
+*Recursive Search*:
+
+### Search Algorithms
+
+*Breadth-First-Search*: A graph-based search algorithm wherein the next node visited from the frontier is chosen based on the MIN # of hops from the start. Frontier = regular queue (FIFO).
+
+*Breadth-Tree-Search*: A graph-based search algorithm wherein the next node visited from the frontier is chosen based on the MIN # of hops from the start. Frontier = regular queue (FIFO).
+
+*Depth-First-Graph-Search*: A graph-based search algorithm wherein the next node visited from the frontier is chosen based on the MAX # of hops from the start. Frontier = regular stack (FILO).
 
 *Depth-Limited-Search*: A search algorithm wherein the next node visited from the frontier is chosen based on 
+
+*Uniform Cost Search*: A graph-based search algorithm wherein the next node visited from the frontier is chosen based on the MIN *total-path-cost* of the node. Total-path-cost is the cost of reaching that node from the start node. A Uniform Cost Search reduces to a Breadh-First-Search when all graph edges have the same cost (eg. cost of 1). Frontier = priority queue.
+
+*Recursive-Best-First-Search*:
+
+*Greedy-Best-First-Graph-Search*:
+
+*A-Star Search*:
+
+### Problems
+
+The planning problem being considered has the following characteristics:
+
+
+#### Problem 1
+
+#### Problem 2
+
+#### Problem 3
+
 
 ## Optimal Plan
 
