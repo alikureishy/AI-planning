@@ -59,43 +59,46 @@ The planning problem being considered has the following characteristics:
 
 A summary of the "Air Cargo Transport" problem, in Planning Domain Definition Language (PDDL).
 
-#### Action Schema
-  Action(Load(c, p, a),
-    PRECOND: At(c, a) ∧ At(p, a) ∧ Cargo(c) ∧ Plane(p) ∧ Airport(a)
-    EFFECT: ¬ At(c, a) ∧ In(c, p))
-  Action(Unload(c, p, a),
-    PRECOND: In(c, p) ∧ At(p, a) ∧ Cargo(c) ∧ Plane(p) ∧ Airport(a)
-    EFFECT: At(c, a) ∧ ¬ In(c, p))
-  Action(Fly(p, from, to),
-    PRECOND: At(p, from) ∧ Plane(p) ∧ Airport(from) ∧ Airport(to)
-    EFFECT: ¬ At(p, from) ∧ At(p, to))
+- Air Cargo Action Schema:
+```
+Action(Load(c, p, a),
+	PRECOND: At(c, a) ∧ At(p, a) ∧ Cargo(c) ∧ Plane(p) ∧ Airport(a)
+	EFFECT: ¬ At(c, a) ∧ In(c, p))
+Action(Unload(c, p, a),
+	PRECOND: In(c, p) ∧ At(p, a) ∧ Cargo(c) ∧ Plane(p) ∧ Airport(a)
+	EFFECT: At(c, a) ∧ ¬ In(c, p))
+Action(Fly(p, from, to),
+	PRECOND: At(p, from) ∧ Plane(p) ∧ Airport(from) ∧ Airport(to)
+	EFFECT: ¬ At(p, from) ∧ At(p, to))
+```
 
-#### Problem 1
-
-  Init(At(C1, SFO) ∧ At(C2, JFK) 
-    ∧ At(P1, SFO) ∧ At(P2, JFK) 
-    ∧ Cargo(C1) ∧ Cargo(C2) 
-    ∧ Plane(P1) ∧ Plane(P2)
-    ∧ Airport(JFK) ∧ Airport(SFO))
-  Goal(At(C1, JFK) ∧ At(C2, SFO))
-
-#### Problem 2
-
-  Init(At(C1, SFO) ∧ At(C2, JFK) ∧ At(C3, ATL) 
-    ∧ At(P1, SFO) ∧ At(P2, JFK) ∧ At(P3, ATL) 
-    ∧ Cargo(C1) ∧ Cargo(C2) ∧ Cargo(C3)
-    ∧ Plane(P1) ∧ Plane(P2) ∧ Plane(P3)
-    ∧ Airport(JFK) ∧ Airport(SFO) ∧ Airport(ATL))
-  Goal(At(C1, JFK) ∧ At(C2, SFO) ∧ At(C3, SFO))
-
-#### Problem 3
-
-  Init(At(C1, SFO) ∧ At(C2, JFK) ∧ At(C3, ATL) ∧ At(C4, ORD) 
-    ∧ At(P1, SFO) ∧ At(P2, JFK) 
-    ∧ Cargo(C1) ∧ Cargo(C2) ∧ Cargo(C3) ∧ Cargo(C4)
-    ∧ Plane(P1) ∧ Plane(P2)
-    ∧ Airport(JFK) ∧ Airport(SFO) ∧ Airport(ATL) ∧ Airport(ORD))
-  Goal(At(C1, JFK) ∧ At(C3, JFK) ∧ At(C2, SFO) ∧ At(C4, SFO))
+- Problem 1 initial state and goal:
+```
+Init(At(C1, SFO) ∧ At(C2, JFK) 
+	∧ At(P1, SFO) ∧ At(P2, JFK) 
+	∧ Cargo(C1) ∧ Cargo(C2) 
+	∧ Plane(P1) ∧ Plane(P2)
+	∧ Airport(JFK) ∧ Airport(SFO))
+Goal(At(C1, JFK) ∧ At(C2, SFO))
+```
+- Problem 2 initial state and goal:
+```
+Init(At(C1, SFO) ∧ At(C2, JFK) ∧ At(C3, ATL) 
+	∧ At(P1, SFO) ∧ At(P2, JFK) ∧ At(P3, ATL) 
+	∧ Cargo(C1) ∧ Cargo(C2) ∧ Cargo(C3)
+	∧ Plane(P1) ∧ Plane(P2) ∧ Plane(P3)
+	∧ Airport(JFK) ∧ Airport(SFO) ∧ Airport(ATL))
+Goal(At(C1, JFK) ∧ At(C2, SFO) ∧ At(C3, SFO))
+```
+- Problem 3 initial state and goal:
+```
+Init(At(C1, SFO) ∧ At(C2, JFK) ∧ At(C3, ATL) ∧ At(C4, ORD) 
+	∧ At(P1, SFO) ∧ At(P2, JFK) 
+	∧ Cargo(C1) ∧ Cargo(C2) ∧ Cargo(C3) ∧ Cargo(C4)
+	∧ Plane(P1) ∧ Plane(P2)
+	∧ Airport(JFK) ∧ Airport(SFO) ∧ Airport(ATL) ∧ Airport(ORD))
+Goal(At(C1, JFK) ∧ At(C3, JFK) ∧ At(C2, SFO) ∧ At(C4, SFO))
+```
 
 ## Optimal Plan
 
