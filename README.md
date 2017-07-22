@@ -1,7 +1,7 @@
 <!--- Adding links to various images used in this document --->
-[Data]: https://github.com/safdark/AI-planning/blob/master/docs/images/Project3_Data.png
+[Data]: https://github.com/safdark/AI-planning/blob/master/Project3_Data.png
 
-[![Data]]
+![Data]
 
 # AI - Planning
 
