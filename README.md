@@ -3,13 +3,13 @@
 
 ![Data] (https://github.com/safdark/AI-planning/blob/master/Project3_Data.png)
 
-# AI - Planning
+# AI - Planning - Air Cargo Transport
 
 This document gives a high level overview of the search algorithms being evaluated, and a description of the problems they are being evaluated against.
 
 ## Overview
 
-### Definitions/Terms
+### Common Terms
 
 *Runtime Metrics*: References to the word 'Performance Metrics' will be intended to refer to an algorithm's performance across 4 metrics - runtime, node expansions, goal tests and new node creations. This avoids redundancy
 
@@ -26,7 +26,7 @@ This document gives a high level overview of the search algorithms being evaluat
 
 *Recursive Search*:
 
-### Search Algorithms
+### Search Algorithms Used
 
 *Breadth-First-Search*: A graph-based search algorithm wherein the next node visited from the frontier is chosen based on the MIN # of hops from the start. Frontier = regular queue (FIFO).
 
@@ -44,17 +44,58 @@ This document gives a high level overview of the search algorithms being evaluat
 
 *A-Star Search*:
 
-### Problems
+### Environment Characteristics
 
 The planning problem being considered has the following characteristics:
+- Observability: Full (vs Partial)
+- Agent: Single (vs Multi-Agent)
+- Determinism: Deterministic (vs Stochastic)
+- Progression: Sequential (not Episodic)
+- Dynamism: Static (not Dynamic)
+- Time: Discrete (not Continuous)
+- Knowledge: Known (not Unknown)
 
+### Problem Definition
+
+A summary of the "Air Cargo Transport" problem, in Planning Domain Definition Language (PDDL).
+
+#### Action Schema
+  Action(Load(c, p, a),
+    PRECOND: At(c, a) ∧ At(p, a) ∧ Cargo(c) ∧ Plane(p) ∧ Airport(a)
+    EFFECT: ¬ At(c, a) ∧ In(c, p))
+  Action(Unload(c, p, a),
+    PRECOND: In(c, p) ∧ At(p, a) ∧ Cargo(c) ∧ Plane(p) ∧ Airport(a)
+    EFFECT: At(c, a) ∧ ¬ In(c, p))
+  Action(Fly(p, from, to),
+    PRECOND: At(p, from) ∧ Plane(p) ∧ Airport(from) ∧ Airport(to)
+    EFFECT: ¬ At(p, from) ∧ At(p, to))
 
 #### Problem 1
 
+  Init(At(C1, SFO) ∧ At(C2, JFK) 
+    ∧ At(P1, SFO) ∧ At(P2, JFK) 
+    ∧ Cargo(C1) ∧ Cargo(C2) 
+    ∧ Plane(P1) ∧ Plane(P2)
+    ∧ Airport(JFK) ∧ Airport(SFO))
+  Goal(At(C1, JFK) ∧ At(C2, SFO))
+
 #### Problem 2
+
+  Init(At(C1, SFO) ∧ At(C2, JFK) ∧ At(C3, ATL) 
+    ∧ At(P1, SFO) ∧ At(P2, JFK) ∧ At(P3, ATL) 
+    ∧ Cargo(C1) ∧ Cargo(C2) ∧ Cargo(C3)
+    ∧ Plane(P1) ∧ Plane(P2) ∧ Plane(P3)
+    ∧ Airport(JFK) ∧ Airport(SFO) ∧ Airport(ATL))
+  Goal(At(C1, JFK) ∧ At(C2, SFO) ∧ At(C3, SFO))
 
 #### Problem 3
 
+  Init(At(C1, SFO) ∧ At(C2, JFK) ∧ At(C3, ATL) ∧ At(C4, ORD) 
+    ∧ At(P1, SFO) ∧ At(P2, JFK) 
+    ∧ Cargo(C1) ∧ Cargo(C2) ∧ Cargo(C3) ∧ Cargo(C4)
+    ∧ Plane(P1) ∧ Plane(P2)
+    ∧ Airport(JFK) ∧ Airport(SFO) ∧ Airport(ATL) ∧ Airport(ORD))
+  Goal(At(C1, JFK) ∧ At(C3, JFK) ∧ At(C2, SFO) ∧ At(C4, SFO))
 
 ## Optimal Plan
 
