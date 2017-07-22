@@ -3,7 +3,7 @@
 
 ![Data] (https://github.com/safdark/AI-planning/blob/master/Project3_Data.png)
 
-# AI - Planning - Air Cargo Transport
+# Path Planning - Air Cargo Transport
 
 This document gives a high level overview of the search algorithms being evaluated, and a description of the problems they are being evaluated against.
 
@@ -22,7 +22,9 @@ This document gives a high level overview of the search algorithms being evaluat
 
 ### Algorithm Flavor
 
-*Greedy Search*:
+*Greedy Search*: Usually means that the decision is never revised, eventually accepting suboptimal solutions at the benefit of improvements in running time
+
+*Best-First Search*: 
 
 *Recursive Search*:
 
@@ -34,13 +36,13 @@ This document gives a high level overview of the search algorithms being evaluat
 
 *Depth-First-Graph-Search*: A graph-based search algorithm wherein the next node visited from the frontier is chosen based on the MAX # of hops from the start. Frontier = regular stack (FILO).
 
-*Depth-Limited-Search*: A search algorithm wherein the next node visited from the frontier is chosen based on 
+*Depth-Limited-Search*: A variant of a depth-first-graph-search wherein the search is "cut-off" (i.e, back-tracks and continues to the next neighbor of the parent node) if the given node is at a depth that is lower than the cut-off depth that is provided as a parameter to the search. This can prevent an algorithm from ratholing too far down a search path by pruning out lengthy search paths.
 
 *Uniform Cost Search*: A graph-based search algorithm wherein the next node visited from the frontier is chosen based on the MIN *total-path-cost* of the node. Total-path-cost is the cost of reaching that node from the start node. A Uniform Cost Search reduces to a Breadh-First-Search when all graph edges have the same cost (eg. cost of 1). Frontier = priority queue.
 
 *Recursive-Best-First-Search*:
 
-*Greedy-Best-First-Graph-Search*:
+*Greedy-Best-First-Graph-Search*: A graph-based search algorithm wherein the next node visited from the frontier is chosen based on the MIN of the *estimated* cost of the node to the goal.
 
 *A-Star Search*:
 
