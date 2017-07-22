@@ -9,6 +9,20 @@
 
 *Runtime Metrics*: References to the word 'Performance Metrics' will be intended to refer to an algorithm's performance across 4 metrics - runtime, node expansions, goal tests and new node creations. This avoids redundancy
 
+*Frontier*: This is a collection of the nodes whose neighbors have not yet been explored. In other words, these nodes have been reached, but have not been explored further. For the purpose of our discussion, the 'frontier' also encapsulates the underlying *representation* of this collection -- i.e, either a list, stack, queue, priority-queue etc. This is important to consider here because the choice of this data structure precisely determines the type of search algorithm ultimately being implemented (eg. Breadth-First-Search, Depth-First-Search, Uniform-Cost-Search etc), because this data structure dictates the order in which elements are selected at each subsequent step of the search algorithm.
+
+*Tree-Search*: The structure of the search space in this case is a tree, with no cross-edges or back-edges (as is possible with a graph search). The implication of this on the algorithm is that there is no need to maintain a list of explored/visited nodes. Each neighbor of a node that is being explored/visited is guaranteed not to have been visited before.
+
+*Graph-Search*: The structure of the search space in this case is a graph, with forward-edges, cross-edges and back-edges. The implication of this on the saerch algorithm is that it needs to maintain a list of explored/visited edges, and each time an edge's neighbors are explored, those neighbors that have already been explored are not added to the frontier. The Graph-Search algorithm reduces to a Tree-Search algorithm if the graph being searched on fulfills the structural requirements of being a tree data structure (i,e, no back- or cross- edges).
+
+*Breadth-First-Search*: A search algorithm wherein the next node visited from the frontier is chosen based on the MIN # of hops from the start. Frontier = regular queue (FIFO).
+
+*Depth-First-Search*: A search algorithm wherein the next node visited from the frontier is chosen based on the MAX # of hops from the start. Frontier = regular stack (FILO).
+
+*Uniform Cost Search*: A search algorithm wherein the next node visited from the frontier is chosen based on the MIN *total-path-cost* of the node. Total-path-cost is the cost of reaching that node from the start node. A Uniform Cost Search reduces to a Breadh-First-Search when all graph edges have the same cost (eg. cost of 1). Frontier = priority queue.
+
+*Depth-Limited-Search*: A search algorithm wherein the next node visited from the frontier is chosen based on 
+
 ## Optimal Plan
 
 Overall, 'A-Star with the ignore-preconditions heuristic' performed the fastest - generally due to fewer node expansions, goal tests, and new node creations - among the search algorithms used, while also yielding an optimal path in each case.
@@ -39,7 +53,7 @@ As already mentioned, for these problems, BFS's runtime metrics were worse than 
 
 ### Uniform Cost Search
 
-Overall, UCS achieved an optimal plan for *all 3 problems*, with acceptable runtime metrics. However, the runtime metrics were not as optimal as those achieved by BFS. UCS consistently underperformed BFS in terms of these latter 3 metrics. *<This make sense because..?>*
+Overall, UCS achieved an optimal plan for *all 3 problems*, but the runtime metrics were not as optimal as those achieved by BFS. UCS consistently underperformed BFS in those metrics because 
 
 ## Comparison & contrast of A-Star heuristic search result metrics
 * Ignore preconditions:  In all 3 problems, A-Star with the ignore-preconditions heuristic yielded optimal results in a highly performant manner.
